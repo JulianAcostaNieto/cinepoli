@@ -9,6 +9,7 @@ public class ReservaPeliculas extends javax.swing.JFrame {
     public ReservaPeliculas() {
         initComponents();
         
+        btnVenta.setEnabled(false);
         this.setLocationRelativeTo(null);
     }
     
@@ -39,7 +40,6 @@ public class ReservaPeliculas extends javax.swing.JFrame {
         txtNumeroEntradas = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         horario1 = new javax.swing.JRadioButton();
         horario2 = new javax.swing.JRadioButton();
         horario3 = new javax.swing.JRadioButton();
@@ -47,12 +47,14 @@ public class ReservaPeliculas extends javax.swing.JFrame {
         Sala2D = new javax.swing.JRadioButton();
         Sala3D = new javax.swing.JRadioButton();
         SalaXD = new javax.swing.JRadioButton();
-        Asientos = new javax.swing.JComboBox();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel11 = new javax.swing.JLabel();
         PagoEfectivo = new javax.swing.JRadioButton();
         PagoTargeta = new javax.swing.JRadioButton();
         btnVenta = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         Fondo2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,7 +72,7 @@ public class ReservaPeliculas extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tekton Pro", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Inicie su Reservacion");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, 210, 30));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 270, 30));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 360, 140, 20));
 
         jButton1.setBackground(new java.awt.Color(153, 0, 0));
@@ -128,7 +130,7 @@ public class ReservaPeliculas extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("N° de Entredas:");
+        jLabel7.setText("N° de Entradas:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 477, -1, 30));
 
         txtNumeroEntradas.setBackground(new java.awt.Color(102, 0, 0));
@@ -144,17 +146,12 @@ public class ReservaPeliculas extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Horario:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 550, 70, 30));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, 70, 30));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Sala:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(503, 550, 40, 30));
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Asientos Disponibles:");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 610, -1, 30));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 560, 40, 30));
 
         horario1.setBackground(new java.awt.Color(102, 0, 0));
         horario1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -165,7 +162,7 @@ public class ReservaPeliculas extends javax.swing.JFrame {
                 horario1ActionPerformed(evt);
             }
         });
-        getContentPane().add(horario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 150, 30));
+        getContentPane().add(horario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 600, 150, 30));
 
         horario2.setBackground(new java.awt.Color(102, 0, 0));
         horario2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -176,43 +173,37 @@ public class ReservaPeliculas extends javax.swing.JFrame {
                 horario2ActionPerformed(evt);
             }
         });
-        getContentPane().add(horario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 590, 160, 30));
+        getContentPane().add(horario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 600, 160, 30));
 
         horario3.setBackground(new java.awt.Color(102, 0, 0));
         horario3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         horario3.setForeground(new java.awt.Color(255, 255, 255));
         horario3.setText("8:00 pm a 9:00 pm");
-        getContentPane().add(horario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 630, 150, 30));
+        getContentPane().add(horario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 640, 150, 30));
 
         horario4.setBackground(new java.awt.Color(102, 0, 0));
         horario4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         horario4.setForeground(new java.awt.Color(255, 255, 255));
         horario4.setText("9:00 pm a 11:00 pm");
-        getContentPane().add(horario4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 630, 160, 30));
+        getContentPane().add(horario4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 640, 160, 30));
 
         Sala2D.setBackground(new java.awt.Color(102, 0, 0));
         Sala2D.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Sala2D.setForeground(new java.awt.Color(255, 255, 255));
         Sala2D.setText("Sala 2D");
-        getContentPane().add(Sala2D, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 590, -1, 30));
+        getContentPane().add(Sala2D, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 600, -1, 30));
 
         Sala3D.setBackground(new java.awt.Color(102, 0, 0));
         Sala3D.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Sala3D.setForeground(new java.awt.Color(255, 255, 255));
         Sala3D.setText("Sala 3D");
-        getContentPane().add(Sala3D, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 590, -1, 30));
+        getContentPane().add(Sala3D, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 600, -1, 30));
 
         SalaXD.setBackground(new java.awt.Color(102, 0, 0));
         SalaXD.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         SalaXD.setForeground(new java.awt.Color(255, 255, 255));
         SalaXD.setText("Sala xD");
-        getContentPane().add(SalaXD, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 630, 80, 30));
-
-        Asientos.setBackground(new java.awt.Color(102, 0, 0));
-        Asientos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Asientos.setForeground(new java.awt.Color(255, 255, 255));
-        Asientos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(Asientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 610, 140, 30));
+        getContentPane().add(SalaXD, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 640, 80, 30));
         getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 700, 1020, 20));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -229,7 +220,12 @@ public class ReservaPeliculas extends javax.swing.JFrame {
         PagoTargeta.setBackground(new java.awt.Color(102, 0, 0));
         PagoTargeta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         PagoTargeta.setForeground(new java.awt.Color(255, 255, 255));
-        PagoTargeta.setText("Targeta");
+        PagoTargeta.setText("Tarjeta");
+        PagoTargeta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PagoTargetaActionPerformed(evt);
+            }
+        });
         getContentPane().add(PagoTargeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 760, -1, 30));
 
         btnVenta.setBackground(new java.awt.Color(204, 0, 0));
@@ -243,8 +239,22 @@ public class ReservaPeliculas extends javax.swing.JFrame {
         });
         getContentPane().add(btnVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 790, 160, 30));
 
+        jButton2.setText("Seleccionar asiento");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 630, -1, -1));
+
+        jLabel10.setText("Su asiento es:");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 580, -1, -1));
+
+        jLabel12.setText("jLabel12");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 580, -1, -1));
+
         Fondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo2.jpg"))); // NOI18N
-        getContentPane().add(Fondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 840));
+        getContentPane().add(Fondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 850));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -294,6 +304,14 @@ public class ReservaPeliculas extends javax.swing.JFrame {
         Recibo.txtEntradas.setText(txtNumeroEntradas.getText());
     }//GEN-LAST:event_btnVentaActionPerformed
 
+    private void PagoTargetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagoTargetaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PagoTargetaActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -328,7 +346,6 @@ public class ReservaPeliculas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox Asientos;
     private javax.swing.JLabel Fondo2;
     private javax.swing.JRadioButton PagoEfectivo;
     private javax.swing.JRadioButton PagoTargeta;
@@ -342,9 +359,11 @@ public class ReservaPeliculas extends javax.swing.JFrame {
     private javax.swing.JRadioButton horario3;
     private javax.swing.JRadioButton horario4;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
