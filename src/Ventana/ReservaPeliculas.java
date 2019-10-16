@@ -2,15 +2,66 @@
 package Ventana;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.time.LocalTime;
+import java.util.Date;
+import java.util.List;
+import java.util.ArrayList;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class ReservaPeliculas extends javax.swing.JFrame {
-
+        List listA = new ArrayList();
     
     public ReservaPeliculas() {
         initComponents();
-        
         btnVenta.setEnabled(false);
+        setEnableHorarios(false);
+        setInitConfiguration();
         this.setLocationRelativeTo(null);
+    }
+    
+    private void setInitConfiguration() {
+        buttonGroup1.add(Sala2D);
+        buttonGroup1.add(Sala3D);
+        buttonGroup1.add(SalaXD);
+        buttonGroup2.add(horario1);
+        buttonGroup2.add(horario2);
+        buttonGroup2.add(horario3);
+        buttonGroup2.add(horario4);
+        buttonGroup2.add(horario5);
+        buttonGroup3.add(PagoEfectivo);
+        buttonGroup3.add(PagoTargeta);
+        ChangeListener changeListener = new ChangeListener() {
+            public void stateChanged(ChangeEvent changEvent) {
+                if (Sala2D.isSelected()) {
+                    setEnableHorarios(true);
+                } else if (Sala3D.isSelected()) {
+                    setEnableHorarios(false, true, true, true, false);
+                } else {
+                    setEnableHorarios(false, false, true, true, false);
+                }
+            }
+        };
+        
+        Sala2D.addChangeListener(changeListener);
+        Sala3D.addChangeListener(changeListener);
+        SalaXD.addChangeListener(changeListener);
+    }
+    
+    private void setEnableHorarios(boolean enable) {
+        horario1.setEnabled(enable);
+        horario2.setEnabled(enable);
+        horario3.setEnabled(enable);
+        horario4.setEnabled(enable);
+        horario5.setEnabled(enable);
+    }
+    
+    private void setEnableHorarios(boolean enable1, boolean enable2, boolean enable3, boolean enable4, boolean enable5) {
+        horario1.setEnabled(enable1);
+        horario2.setEnabled(enable2);
+        horario3.setEnabled(enable3);
+        horario4.setEnabled(enable4);
+        horario5.setEnabled(enable5);
     }
     
     public Image getIconImage()
@@ -24,6 +75,9 @@ public class ReservaPeliculas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -41,9 +95,10 @@ public class ReservaPeliculas extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         horario1 = new javax.swing.JRadioButton();
-        horario2 = new javax.swing.JRadioButton();
-        horario3 = new javax.swing.JRadioButton();
         horario4 = new javax.swing.JRadioButton();
+        horario3 = new javax.swing.JRadioButton();
+        horario5 = new javax.swing.JRadioButton();
+        horario2 = new javax.swing.JRadioButton();
         Sala2D = new javax.swing.JRadioButton();
         Sala3D = new javax.swing.JRadioButton();
         SalaXD = new javax.swing.JRadioButton();
@@ -125,6 +180,11 @@ public class ReservaPeliculas extends javax.swing.JFrame {
         cbxPelicula.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         cbxPelicula.setForeground(new java.awt.Color(255, 255, 255));
         cbxPelicula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxPelicula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxPeliculaActionPerformed(evt);
+            }
+        });
         getContentPane().add(cbxPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 440, 250, 30));
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 1020, 10));
 
@@ -146,64 +206,95 @@ public class ReservaPeliculas extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Horario:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, 70, 30));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 570, 70, 30));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Sala:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 560, 40, 30));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 570, 40, 30));
 
         horario1.setBackground(new java.awt.Color(102, 0, 0));
         horario1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         horario1.setForeground(new java.awt.Color(255, 255, 255));
-        horario1.setText("2:00 pm a 4:00 pm");
+        horario1.setText("11:00 am");
         horario1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 horario1ActionPerformed(evt);
             }
         });
-        getContentPane().add(horario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 600, 150, 30));
+        getContentPane().add(horario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 610, 110, 30));
+
+        horario4.setBackground(new java.awt.Color(102, 0, 0));
+        horario4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        horario4.setForeground(new java.awt.Color(255, 255, 255));
+        horario4.setText("6:00 pm");
+        horario4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                horario4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(horario4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 650, 110, 30));
+
+        horario3.setBackground(new java.awt.Color(102, 0, 0));
+        horario3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        horario3.setForeground(new java.awt.Color(255, 255, 255));
+        horario3.setText("3:30 pm");
+        horario3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                horario3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(horario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 610, 110, 30));
+
+        horario5.setBackground(new java.awt.Color(102, 0, 0));
+        horario5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        horario5.setForeground(new java.awt.Color(255, 255, 255));
+        horario5.setText("9:00 pm");
+        horario5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                horario5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(horario5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 630, 120, 30));
 
         horario2.setBackground(new java.awt.Color(102, 0, 0));
         horario2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         horario2.setForeground(new java.awt.Color(255, 255, 255));
-        horario2.setText("5:00 pm a 7:00 pm");
+        horario2.setText("1:00 pm ");
         horario2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 horario2ActionPerformed(evt);
             }
         });
-        getContentPane().add(horario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 600, 160, 30));
-
-        horario3.setBackground(new java.awt.Color(102, 0, 0));
-        horario3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        horario3.setForeground(new java.awt.Color(255, 255, 255));
-        horario3.setText("8:00 pm a 9:00 pm");
-        getContentPane().add(horario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 640, 150, 30));
-
-        horario4.setBackground(new java.awt.Color(102, 0, 0));
-        horario4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        horario4.setForeground(new java.awt.Color(255, 255, 255));
-        horario4.setText("9:00 pm a 11:00 pm");
-        getContentPane().add(horario4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 640, 160, 30));
+        getContentPane().add(horario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 650, 110, 30));
 
         Sala2D.setBackground(new java.awt.Color(102, 0, 0));
         Sala2D.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Sala2D.setForeground(new java.awt.Color(255, 255, 255));
         Sala2D.setText("Sala 2D");
-        getContentPane().add(Sala2D, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 600, -1, 30));
+        Sala2D.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                Sala2DStateChanged(evt);
+            }
+        });
+        Sala2D.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Sala2DActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Sala2D, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 610, -1, 30));
 
         Sala3D.setBackground(new java.awt.Color(102, 0, 0));
         Sala3D.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Sala3D.setForeground(new java.awt.Color(255, 255, 255));
         Sala3D.setText("Sala 3D");
-        getContentPane().add(Sala3D, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 600, -1, 30));
+        getContentPane().add(Sala3D, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 610, -1, 30));
 
         SalaXD.setBackground(new java.awt.Color(102, 0, 0));
         SalaXD.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         SalaXD.setForeground(new java.awt.Color(255, 255, 255));
         SalaXD.setText("Sala xD");
-        getContentPane().add(SalaXD, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 640, 80, 30));
+        getContentPane().add(SalaXD, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 650, 80, 30));
         getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 700, 1020, 20));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -281,9 +372,9 @@ public class ReservaPeliculas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroEntradasActionPerformed
 
-    private void horario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horario2ActionPerformed
+    private void horario4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horario4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_horario2ActionPerformed
+    }//GEN-LAST:event_horario4ActionPerformed
 
     private void horario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horario1ActionPerformed
         // TODO add your handling code here:
@@ -310,7 +401,37 @@ public class ReservaPeliculas extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        Date date = new Date();
+        LocalTime time = LocalTime.now();
+        System.out.println("Current time of the day: " + time.getHour());
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void cbxPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPeliculaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxPeliculaActionPerformed
+
+    private void horario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horario2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_horario2ActionPerformed
+
+    private void horario3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horario3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_horario3ActionPerformed
+
+    private void horario5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horario5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_horario5ActionPerformed
+
+    private void Sala2DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Sala2DActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Sala2DActionPerformed
+
+    private void Sala2DStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_Sala2DStateChanged
+        // TODO add your handling code here:
+        if (Sala2D.isSelected()) {
+            
+        }
+    }//GEN-LAST:event_Sala2DStateChanged
 
     
     public static void main(String args[]) {
@@ -353,11 +474,15 @@ public class ReservaPeliculas extends javax.swing.JFrame {
     private javax.swing.JRadioButton Sala3D;
     private javax.swing.JRadioButton SalaXD;
     private javax.swing.JButton btnVenta;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JComboBox cbxPelicula;
     private javax.swing.JRadioButton horario1;
     private javax.swing.JRadioButton horario2;
     private javax.swing.JRadioButton horario3;
     private javax.swing.JRadioButton horario4;
+    private javax.swing.JRadioButton horario5;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
