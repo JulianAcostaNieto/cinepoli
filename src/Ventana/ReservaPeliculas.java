@@ -10,6 +10,9 @@ public class ReservaPeliculas extends javax.swing.JFrame {
         initComponents();
         
         this.setLocationRelativeTo(null);
+        groupPago.add(PagoEfectivo);
+        groupPago.add(PagoTarjeta);
+
     }
     
     public Image getIconImage()
@@ -23,6 +26,7 @@ public class ReservaPeliculas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        groupPago = new javax.swing.ButtonGroup();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -51,7 +55,7 @@ public class ReservaPeliculas extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jLabel11 = new javax.swing.JLabel();
         PagoEfectivo = new javax.swing.JRadioButton();
-        PagoTargeta = new javax.swing.JRadioButton();
+        PagoTarjeta = new javax.swing.JRadioButton();
         btnVenta = new javax.swing.JButton();
         Fondo2 = new javax.swing.JLabel();
 
@@ -226,11 +230,11 @@ public class ReservaPeliculas extends javax.swing.JFrame {
         PagoEfectivo.setText("Efectivo");
         getContentPane().add(PagoEfectivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 760, -1, 30));
 
-        PagoTargeta.setBackground(new java.awt.Color(102, 0, 0));
-        PagoTargeta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        PagoTargeta.setForeground(new java.awt.Color(255, 255, 255));
-        PagoTargeta.setText("Targeta");
-        getContentPane().add(PagoTargeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 760, -1, 30));
+        PagoTarjeta.setBackground(new java.awt.Color(102, 0, 0));
+        PagoTarjeta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        PagoTarjeta.setForeground(new java.awt.Color(255, 255, 255));
+        PagoTarjeta.setText("Tarjeta");
+        getContentPane().add(PagoTarjeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 760, -1, 30));
 
         btnVenta.setBackground(new java.awt.Color(204, 0, 0));
         btnVenta.setFont(new java.awt.Font("Tekton Pro", 1, 18)); // NOI18N
@@ -281,17 +285,43 @@ public class ReservaPeliculas extends javax.swing.JFrame {
 
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
         // TODO add your handling code here:
+        if(PagoTarjeta.isSelected())
+        {
+            TarjetaCredito  tc = new TarjetaCredito(new TarjetaCredito.OnOk() {
+                @Override
+                public void onContinue() {
+                   // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    Recibo  r = new Recibo("Tarjeta de credito");
+                    
+                    r.setVisible(true);
+                    dispose();
 
-        Recibo  r = new Recibo();
-        r.setVisible(true);
-        dispose();
-        
-        //Enviar datos de nombre y cc a la ventana recibo
-        Recibo.txtRecibido1.setText(txtCliente.getText());
-        Recibo.txtRecibido2.setText(txtClienteCC.getText());
-        
-        //Eviar datos de cantidad de entradas a la ventana recibo
-        Recibo.txtEntradas.setText(txtNumeroEntradas.getText());
+                    //Enviar datos de nombre y cc a la ventana recibo
+                    Recibo.txtRecibido1.setText(txtCliente.getText());
+                    Recibo.txtRecibido2.setText(txtClienteCC.getText());
+
+                    //Eviar datos de cantidad de entradas a la ventana recibo
+                    Recibo.txtEntradas.setText(txtNumeroEntradas.getText());
+                }
+            });
+            tc.setVisible(true);
+            
+        }
+        else if(PagoEfectivo.isSelected())
+        {
+            Recibo  r = new Recibo("Efectivo");
+                    
+                    r.setVisible(true);
+                    dispose();
+
+                    //Enviar datos de nombre y cc a la ventana recibo
+                    Recibo.txtRecibido1.setText(txtCliente.getText());
+                    Recibo.txtRecibido2.setText(txtClienteCC.getText());
+
+                    //Eviar datos de cantidad de entradas a la ventana recibo
+                    Recibo.txtEntradas.setText(txtNumeroEntradas.getText());
+        }
+      
     }//GEN-LAST:event_btnVentaActionPerformed
 
     
@@ -331,12 +361,13 @@ public class ReservaPeliculas extends javax.swing.JFrame {
     private javax.swing.JComboBox Asientos;
     private javax.swing.JLabel Fondo2;
     private javax.swing.JRadioButton PagoEfectivo;
-    private javax.swing.JRadioButton PagoTargeta;
+    private javax.swing.JRadioButton PagoTarjeta;
     private javax.swing.JRadioButton Sala2D;
     private javax.swing.JRadioButton Sala3D;
     private javax.swing.JRadioButton SalaXD;
     private javax.swing.JButton btnVenta;
     private javax.swing.JComboBox cbxPelicula;
+    private javax.swing.ButtonGroup groupPago;
     private javax.swing.JRadioButton horario1;
     private javax.swing.JRadioButton horario2;
     private javax.swing.JRadioButton horario3;

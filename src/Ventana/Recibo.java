@@ -9,8 +9,7 @@ import java.util.Date;
 
 public class Recibo extends javax.swing.JFrame {
 
-    
-    public Recibo() {
+    public Recibo(String formaPago) {
         initComponents();
         this.setLocationRelativeTo(null);
         
@@ -19,6 +18,7 @@ public class Recibo extends javax.swing.JFrame {
         Date sistFecha = new Date();
         SimpleDateFormat formato = new SimpleDateFormat("dd / MMM / YYYY");
         fecha.setText(formato.format(sistFecha));
+        lblFormaPago.setText(formaPago);
     }
     
     public Image getIconImage()
@@ -27,6 +27,7 @@ public class Recibo extends javax.swing.JFrame {
         return retValue;
     }
 
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -52,7 +53,7 @@ public class Recibo extends javax.swing.JFrame {
         btnImprimirTiquete = new javax.swing.JButton();
         btnVolver2 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        lblFormaPago = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         txtRecibido1 = new javax.swing.JLabel();
         txtRecibido2 = new javax.swing.JLabel();
@@ -134,9 +135,9 @@ public class Recibo extends javax.swing.JFrame {
         jLabel12.setText("..................................................");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 570, 200, -1));
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel13.setText("..................................................");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 600, 200, -1));
+        lblFormaPago.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblFormaPago.setText("..................................................");
+        getContentPane().add(lblFormaPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 600, 200, -1));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel14.setText("..................................................");
@@ -205,7 +206,7 @@ public class Recibo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Recibo().setVisible(true);
+                new Recibo("Test").setVisible(true);
             }
         });
     }
@@ -218,7 +219,6 @@ public class Recibo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -232,6 +232,7 @@ public class Recibo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblFormaPago;
     public static javax.swing.JLabel txtEntradas;
     public static javax.swing.JLabel txtRecibido1;
     public static javax.swing.JLabel txtRecibido2;
