@@ -8,16 +8,23 @@ import java.util.List;
 import java.util.ArrayList;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import java.awt.ItemSelectable;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 public class ReservaPeliculas extends javax.swing.JFrame {
         List listA = new ArrayList();
+        String selectMovie = "";
+        String sala = "";
+        String horario = "";
     
     public ReservaPeliculas() {
         initComponents();
-        btnVenta.setEnabled(false);
+        //btnVenta.setEnabled(false);
         setEnableHorarios(false);
         setInitConfiguration();
         this.setLocationRelativeTo(null);
+        setListener();
     }
     
     private void setInitConfiguration() {
@@ -31,21 +38,47 @@ public class ReservaPeliculas extends javax.swing.JFrame {
         buttonGroup2.add(horario5);
         buttonGroup3.add(PagoEfectivo);
         buttonGroup3.add(PagoTargeta);
+    }
+    
+    private void setListener() {
         ChangeListener changeListener = new ChangeListener() {
             public void stateChanged(ChangeEvent changEvent) {
                 if (Sala2D.isSelected()) {
                     setEnableHorarios(true);
+                    sala = "sala2D";
                 } else if (Sala3D.isSelected()) {
                     setEnableHorarios(false, true, true, true, false);
+                    sala = "sala3D";
                 } else {
                     setEnableHorarios(false, false, true, true, false);
+                    sala = "salaXD";
                 }
             }
         };
-        
         Sala2D.addChangeListener(changeListener);
         Sala3D.addChangeListener(changeListener);
         SalaXD.addChangeListener(changeListener);
+        ChangeListener changeListenerHorario = new ChangeListener() {
+            public void stateChanged(ChangeEvent changEvent) {
+                horario = changEvent.getSource().toString();
+            }
+        };
+        horario1.addChangeListener(changeListenerHorario);
+        horario2.addChangeListener(changeListenerHorario);
+        horario3.addChangeListener(changeListenerHorario);
+        horario4.addChangeListener(changeListenerHorario);
+        horario5.addChangeListener(changeListenerHorario);
+        //ItemListener
+        ItemListener itemListener = new ItemListener() {
+            public void itemStateChanged(ItemEvent itemEvent) {
+                int state = itemEvent.getStateChange();
+                System.out.println((state == ItemEvent.SELECTED) ? "Selected" : "Deselected");
+                System.out.println("Item: " + itemEvent.getItem());
+                ItemSelectable is = itemEvent.getItemSelectable();
+                selectMovie = "Item: " + itemEvent.getItem();
+            }
+        };
+        cbxPelicula.addItemListener(itemListener);
     }
     
     private void setEnableHorarios(boolean enable) {
@@ -179,7 +212,7 @@ public class ReservaPeliculas extends javax.swing.JFrame {
         cbxPelicula.setBackground(new java.awt.Color(102, 0, 0));
         cbxPelicula.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         cbxPelicula.setForeground(new java.awt.Color(255, 255, 255));
-        cbxPelicula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxPelicula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jhon Wick 3 ", "Toy story 4", "IT (ESO) 2" }));
         cbxPelicula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxPeliculaActionPerformed(evt);
@@ -388,11 +421,14 @@ public class ReservaPeliculas extends javax.swing.JFrame {
         dispose();
         
         //Enviar datos de nombre y cc a la ventana recibo
-        Recibo.txtRecibido1.setText(txtCliente.getText());
-        Recibo.txtRecibido2.setText(txtClienteCC.getText());
+        Recibo.txtCliente.setText(txtCliente.getText());
+        Recibo.txtCedula.setText(txtClienteCC.getText());
+        Recibo.txtPelicula.setText(selectMovie);
+        Recibo.txtHorario.setText(horario);
+        Recibo.txtSala.setText(sala);
         
         //Eviar datos de cantidad de entradas a la ventana recibo
-        Recibo.txtEntradas.setText(txtNumeroEntradas.getText());
+        Recibo.txtEntrada.setText(txtNumeroEntradas.getText());
     }//GEN-LAST:event_btnVentaActionPerformed
 
     private void PagoTargetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagoTargetaActionPerformed

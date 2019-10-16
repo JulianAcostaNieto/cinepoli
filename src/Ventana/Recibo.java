@@ -54,11 +54,14 @@ public class Recibo extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        txtRecibido1 = new javax.swing.JLabel();
-        txtRecibido2 = new javax.swing.JLabel();
+        txtAsiento = new javax.swing.JLabel();
+        txtCedula = new javax.swing.JLabel();
+        txtCliente = new javax.swing.JLabel();
+        txtSala = new javax.swing.JLabel();
+        txtEntrada = new javax.swing.JLabel();
+        txtHorario = new javax.swing.JLabel();
+        txtPelicula = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        txtEntradas = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -142,22 +145,31 @@ public class Recibo extends javax.swing.JFrame {
         jLabel14.setText("..................................................");
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 680, 200, -1));
 
-        txtRecibido1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        getContentPane().add(txtRecibido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 224, 200, 20));
+        txtAsiento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        getContentPane().add(txtAsiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, 370, 20));
 
-        txtRecibido2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        getContentPane().add(txtRecibido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 224, 110, 20));
+        txtCedula.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        getContentPane().add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 224, 110, 20));
+
+        txtCliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        getContentPane().add(txtCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 224, 200, 20));
+
+        txtSala.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        getContentPane().add(txtSala, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, 370, 20));
+
+        txtEntrada.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtEntrada.setText("..................................................");
+        getContentPane().add(txtEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 630, 200, -1));
+
+        txtHorario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        getContentPane().add(txtHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 370, 20));
+
+        txtPelicula.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        getContentPane().add(txtPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 370, 20));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel15.setText("N° de Entradas:");
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 620, -1, 30));
-
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel16.setText("..................................................");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 630, 200, -1));
-
-        txtEntradas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        getContentPane().add(txtEntradas, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 630, 40, 20));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo4.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 498, 810));
@@ -221,7 +233,6 @@ public class Recibo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -232,8 +243,12 @@ public class Recibo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    public static javax.swing.JLabel txtEntradas;
-    public static javax.swing.JLabel txtRecibido1;
-    public static javax.swing.JLabel txtRecibido2;
+    public static javax.swing.JLabel txtAsiento;
+    public static javax.swing.JLabel txtCedula;
+    public static javax.swing.JLabel txtCliente;
+    public static javax.swing.JLabel txtEntrada;
+    public static javax.swing.JLabel txtHorario;
+    public static javax.swing.JLabel txtPelicula;
+    public static javax.swing.JLabel txtSala;
     // End of variables declaration//GEN-END:variables
 }
